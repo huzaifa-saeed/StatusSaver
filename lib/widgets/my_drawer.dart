@@ -1,8 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:status_saver/app_info.dart';
 import 'package:status_saver/common.dart';
 import 'package:status_saver/constants.dart';
 import 'package:status_saver/notifiers/theme_mode_notifier.dart';
+import 'package:status_saver/screens/direct_message.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MyDrawer extends ConsumerWidget {
   const MyDrawer({super.key});
@@ -13,6 +16,19 @@ class MyDrawer extends ConsumerWidget {
       elevation: 2.5,
       child: ListView(
         children: [
+          ListTile(
+            title: Text("Direct WhatsApp"),
+            leading: const Icon(FontAwesomeIcons.whatsapp),
+            onTap: () {
+              pop(context);
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => DirectMessage(
+                  ),
+                ),
+              );
+            },
+          ),
           ListTile(
             title: Text(context.l10n.appLanguageLabel),
             leading: const Icon(Icons.translate),
@@ -27,6 +43,14 @@ class MyDrawer extends ConsumerWidget {
             onTap: () {
               pop(context);
               _showThemeModeSelector(context, ref);
+            },
+          ),
+          ListTile(
+            title: Text("Privacy Policy"),
+            leading: const Icon(Icons.privacy_tip),
+            onTap: () async {
+              pop(context);
+              await launch(privacyPolicyUrl);
             },
           ),
           ListTile(

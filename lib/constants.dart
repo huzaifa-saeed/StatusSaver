@@ -25,3 +25,5 @@ const defaultLanguageCode = "en";
 const systemLanguageCode = LanguageCode.system;
 const emptyString = '';
 const themeModeTypeKey = "themeData";
+
+const privacyPolicyUrl = "https://sites.google.com/view/whatsapp-statussaver-app";

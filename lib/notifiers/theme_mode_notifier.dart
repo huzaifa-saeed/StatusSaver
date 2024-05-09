@@ -35,7 +35,7 @@ class ThemeModeNotifier extends StateNotifier<ThemeMode?> {
       case 'dark':
         return ThemeMode.dark;
     }
-    return ThemeMode.system;
+    return ThemeMode.dark;
   }
 
   static String _getThemeModeType(ThemeMode? themeMode) {
